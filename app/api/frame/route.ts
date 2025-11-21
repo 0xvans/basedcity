@@ -5,13 +5,13 @@ export async function GET() {
   <!DOCTYPE html>
   <html>
     <head>
-      <meta property="og:title" content="Based Apollo NFT" />
-      <meta property="og:description" content="BASED APOLLO NFT for Farcaster user." />
-      <meta property="og:image" content="https://based-apollo.vercel.app/splash.png" />
+      <meta property="og:title" content="Based City NFT" />
+      <meta property="og:description" content="BASED CITY NFT for Farcaster user." />
+      <meta property="og:image" content="https://basedcity.vercel.app/splash.png" />
       <meta property="fc:frame" content="vNext" />
-      <meta property="fc:frame:image" content="https://based-apollo.vercel.app/splash.pngg" />
+      <meta property="fc:frame:image" content="https://basedcity.vercel.app/splash.pngg" />
       <meta property="fc:frame:button:1" content="Mint Now" />
-      <meta property="fc:frame:post_url" content="https://based-apollo.vercel.app/" />
+      <meta property="fc:frame:post_url" content="https://basedcity.vercel.app/" />
     </head>
     <body></body>
   </html>`;

@@ -1,20 +1,20 @@
 {
   "frame": {
-    "name": "Based Apollo NFT",
+    "name": "Based City ",
     "version": "1",
-    "iconUrl": "https://based-apollo.vercel.app/icon.png",
-    "homeUrl": "https://based-apollo.vercel.app/",
-    "buttonTitle": "Mint Now",
-    "splashImageUrl": "https://based-apollo.vercel.app/splash.png",
-    "splashBackgroundColor": "#fef6e4",
-    "subtitle": "Free Mint",
-    "description": "BASED APOLLO NFT for Farcaster user.",
-    "primaryCategory": "art-creativity",
-    "webhookUrl": "https://api.neynar.com/f/app/3123f472-cc8d-4314-854a-708323ea99f6/event"
+    "iconUrl": "https://basedcity.vercel.app/icon.png",
+    "homeUrl": "https://basedcity.vercel.app",
+    "imageUrl": "https://basedcity.vercel.app/image.png",
+    "splashImageUrl": "https://basedcity.vercel.app/splash.png",
+    "splashBackgroundColor": "#3226dd",
+    "webhookUrl": "https://basedcity.vercel.app/api/webhook",
+    "subtitle": "Based City NFT",
+    "description": "For Farcaster Community User",
+    "primaryCategory": "utility"
   },
   "accountAssociation": {
-    "header": "eyJmaWQiOjI0ODY2NSwidHlwZSI6ImF1dGgiLCJrZXkiOiIweDhGY0Y1OTI0MjgzM0UzNTNlMDE0ZTI5RjM2ZjhFMTI0ZjBkMzVBMjIifQ",
-    "payload": "eyJkb21haW4iOiJiYXNlZC1hcG9sbG8udmVyY2VsLmFwcCJ9",
-    "signature": "QCDnjc23+eA002gyeytg3RPYkVKWpSNZde92DpywaSk7j6LYXF+RY3ceg3lvoGZAmGc8lpwZuvbtTKF3d4wfRhw="
+    "header": "eyJmaWQiOjM2MDE1NSwidHlwZSI6ImF1dGgiLCJrZXkiOiIweDc3ODBERDMyNzA4RjhiRENBYzg0YTFhMWM4NkEwNzRiRDQ1REZBZEQifQ",
+    "payload": "eyJkb21haW4iOiJiYXNlZGNpdHkudmVyY2VsLmFwcCJ9",
+    "signature": "GehjYcnus1ave3Wb8pTY7Q67A+ma+df/MGLhy5nykOM1331w3EGMMGXwlsQorTpRQzgAXpdtKH/IXe8OL+XvuBs="
   }
 }

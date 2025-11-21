@@ -115,7 +115,7 @@ function GeneratingUI({ progress }: { progress: number }) {
         }
       `}</style>
 
-      <div style={{ fontWeight: 800 }}>Generating...</div>
+      <div style={{ fontWeight: 800 }}>Checking...</div>
 
       <div
         style={{
@@ -239,7 +239,7 @@ function BasedApolloInner() {
           }
         } else {
           setStep('eligible')
-          setStatus('Eligible. Click "Generate" to create your Based Apollo.')
+          setStatus('Check if you eligible.')
         }
       } catch {
         if (!canceled) {
@@ -547,7 +547,7 @@ function BasedApolloInner() {
                   pointerEvents: isGenerating || hasGenerated || isButtonLocked ? 'none' : 'auto',
                 }}
               >
-                {isGenerating ? 'Generating...' : 'Generate'}
+                {isGenerating ? 'Checking...' : 'Check'}
               </button>
 
               {isGenerating && <GeneratingUI progress={generateProgress} />}

@@ -180,11 +180,12 @@ function BasedApolloInner() {
     },
   ] as const
 
-  const computeRarityByRank = (rank: number) => {
-    if (rank < 1000) return 'purple'
-    if (rank < 2000) return 'yellow'
-    if (rank < 3000) return 'blue'
-    return 'green'
+  // RARITY LOGIC
+  const computeRarityFromMinted = (count: number) => {
+    if (count < 500) return 'orange'
+    if (count < 1000) return 'purple'
+    if (count < 2000) return 'green'
+    return 'gray'
   }
 
   const fetchMintedCount = async () => {
@@ -199,6 +200,7 @@ function BasedApolloInner() {
     }
   }
 
+  // INIT
   useEffect(() => {
     let canceled = false
     const init = async () => {
@@ -264,6 +266,7 @@ function BasedApolloInner() {
     return true
   }
 
+  // GENERATE NFT
   const generateNFT = async () => {
     if (!fid) {
       setToast({ msg: 'FID not found.', type: 'error' })
@@ -290,13 +293,14 @@ function BasedApolloInner() {
       await new Promise((r) => setTimeout(r, duration))
 
       const idx = Math.floor(Math.random() * total)
-      const rank = computeRarityByRank(idx)
+
+      const rarity = computeRarityFromMinted(mintedCount || 0)
 
       const insertRes = await supabase.from('wardrips_nft').insert([
         {
           fid,
           image_index: idx,
-          rarity: rank,
+          rarity,
           minted: false,
         },
       ])
@@ -306,11 +310,11 @@ function BasedApolloInner() {
       await fetchMintedCount()
 
       setSelectedIndex(idx)
-      setRankColor(rank)
+      setRankColor(rarity)
       setHasGenerated(true)
       setStep('generated')
       setStatus('Click "Mint NFT" to continue.')
-      setToast({ msg: 'Based Apollo generated successfully.', type: 'success' })
+      setToast({ msg: 'Based City generated successfully.', type: 'success' })
     } catch {
       setToast({ msg: 'Failed to save to Supabase.', type: 'error' })
     } finally {
@@ -325,6 +329,7 @@ function BasedApolloInner() {
     await generateNFT()
   }
 
+  // MINT
   const handleMint = async () => {
     if (!fid || selectedIndex === null) {
       setToast({ msg: 'No generated NFT to mint.', type: 'error' })
@@ -357,16 +362,15 @@ function BasedApolloInner() {
 
       setStatus('Uploading metadata...')
 
-      const metaName = username ? `${username} #${fid}` : `User #${fid}`
+      const metaName = `CITY #${fid}`
 
       const metadata = {
         name: metaName,
-        description: `NFT for Farcaster user ${username || fid}`,
+        description: `Based City NFT for Farcaster user #${fid}`,
         image: `${window.location.origin}/images/${selectedIndex + 1}.png`,
         attributes: [
-          { trait_type: 'Rank Color', value: rankColor || 'unknown' },
+          { trait_type: 'Rarity', value: rankColor || 'unknown' },
           { trait_type: 'FID', value: fid },
-          { trait_type: 'Username', value: username || '-' },
         ],
       }
 
@@ -417,9 +421,9 @@ function BasedApolloInner() {
   }
 
   const handleShare = async () => {
-    const text = encodeURIComponent('I just minted my Based Apollo NFT!  @takemoney.eth')
+    const text = encodeURIComponent('I just minted my Based City NFT!')
     const castUrl = `https://warpcast.com/~/compose?text=${text}&embeds[]=${encodeURIComponent(
-      'https://farcaster.xyz/miniapps/EvgnYVZ-21Tc/based-apollo-nft'
+      'https://farcaster.xyz/miniapps/GOKG6qIovweH/based-city-'
     )}`
 
     try {
@@ -429,7 +433,7 @@ function BasedApolloInner() {
     }
   }
 
-  const openSeaLink = fid ? `https://opensea.io/assets/base/basedapollo` : 'https://opensea.io'
+  const openSeaLink = fid ? `https://opensea.io/assets/base/basedcitynft` : 'https://opensea.io'
 
   return (
     <div
@@ -451,10 +455,9 @@ function BasedApolloInner() {
         <div style={{ textAlign: 'left' }}>
           <h1 style={{ fontSize: 26, fontWeight: 900, margin: 0 }}>BASED CITY</h1>
           <div style={{ fontSize: 12, color: '#000000ff', marginTop: 6 }}>{status}</div>
-          {/* 🔥 MINTED COUNT */}
-          <div style={{ fontSize: 12, color: '#000000ff', marginTop: 4, fontWeight: 700 }}>
-            {mintedCount ?? 0}/{MAX_SUPPLY} minted
-          </div>
+
+          {/* 🔥 Removed minted count UI */}
+          {/* (Previously displayed {mintedCount}/{MAX_SUPPLY}) */}
         </div>
 
         <div style={{ display: 'flex', gap: 6 }}>
@@ -514,7 +517,7 @@ function BasedApolloInner() {
           )}
         </div>
 
-        {/* FIXED — username #fid text */}
+        {/* CITY #FID */}
         {selectedIndex !== null && fid && (
           <div
             style={{
@@ -527,7 +530,7 @@ function BasedApolloInner() {
               textTransform: 'uppercase',
             }}
           >
-            {username ? `${username} #${fid}` : `User #${fid}`}
+            CITY #{fid}
           </div>
         )}
 
@@ -601,7 +604,7 @@ function BasedApolloInner() {
           {step === 'ineligible' && (
             <button
               type="button"
-              onClick={() => window.open('https://farcaster.xyz/miniapps/EvgnYVZ-21Tc/based-apollo-nft', '_blank')}
+              onClick={() => window.open('https://farcaster.xyz/miniapps/GOKG6qIovweH/based-city-', '_blank')}
               style={{ ...btnStyle, background: 'hsla(0, 95%, 44%, 0.00)' }}
             >
               Open MiniApp

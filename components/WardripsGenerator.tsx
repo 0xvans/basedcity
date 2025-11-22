@@ -20,7 +20,7 @@ import { createClient } from '@supabase/supabase-js'
 
 // =========================
 // CONFIG
-const CONTRACT_ADDRESS = '0x1b977cea265ec47c25361e6b96de22e3b2107257'
+const CONTRACT_ADDRESS = '0xf63AEE54Cf271F83a031c9D006ab8B31bd461561'
 const BASE_RPC_URL = 'https://mainnet.base.org'
 const MINT_PRICE_ETH = '0.001'
 const MAX_SUPPLY = 5000

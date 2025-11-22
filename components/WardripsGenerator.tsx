@@ -165,7 +165,7 @@ function BasedApolloInner() {
   const { writeContractAsync } = useContractWrite()
   const { data: balanceData } = useBalance({ address, chainId: base.id })
 
-  const total = 82
+  const total = 94
 
   const CONTRACT_ABI = [
     {
